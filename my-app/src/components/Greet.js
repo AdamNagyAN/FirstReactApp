@@ -1,4 +1,11 @@
 import React from 'react'
 
-export const Greet = () => <h1>Hello there!</h1>;
-
+const Greet = ({ name, heroName, children }) => {
+    return(
+        <div>
+            <h1>Hello {name}, a.k.a {heroName}!</h1>
+            {children}
+        </div>
+    )
+}
+export default Greet
