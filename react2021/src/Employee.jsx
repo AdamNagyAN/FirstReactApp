@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Employee({ firstName: fName}) {
+function Employee({ firstName: fName, id}) {
     return (
         <div>
-            {`Name: ${fName}`}
+            {`Name: ${fName}, ID: ${id}`}
         </div>
     )
 }
