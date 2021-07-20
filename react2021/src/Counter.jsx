@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment } from './redux/ducks/counter'
 
 function Counter() {
-    const [count, setCount] = useState(0);
-
+    const count = useSelector(state => state.counter.count)
+    const dispatch = useDispatch()
     // componentDidMount
     // useEffect(() => {
     //     console.log('we show')
@@ -21,11 +23,14 @@ function Counter() {
         }
     }, [])
 
+    const hendleDecrement = () =>{
+        dispatch(decrement())
+    }
     return (
         <React.Fragment>
             <p>The count is: {count}</p>
-            <button onClick={() => setCount(count+1)}>Increment</button>
-            <button onClick={() => setCount(count-1)}>Decrement</button>
+            <button onClick={() => {dispatch(increment())}}>Increment</button>
+            <button onClick={hendleDecrement}>Decrement</button>
         </React.Fragment>
     )
 }
