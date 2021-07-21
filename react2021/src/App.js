@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from './redux/ducks/user';
 import './App.css';
 import {
   Switch,
@@ -10,6 +12,15 @@ import Employee from './Employee';
 import TodoList from './TodoList';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser())
+  }, [dispatch])
+
+  const user = useSelector((state) => state.user.user)
+  console.log(user);
+  
   const history = useHistory()
   const [loggedIn, setLoggedIn] = React.useState(false);
   const users = [
